@@ -21,7 +21,7 @@ export const Signin_form = () => {
     <form className="form-div">
       {/* HERO TEXT */}
       <header className="signin-text">
-        <h1 className="signin-main-head">Sign In</h1>
+        <h1 className="main-heading">Sign In</h1>
       </header>
 
       {/* INPUTS */}
