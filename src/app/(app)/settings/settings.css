@@ -1,0 +1,567 @@
+/* =========================
+   PAGE BASE (FULL WIDTH)
+========================= */
+.setting-main-div {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 56px 80px 96px;
+  color: #ffffff;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+
+  background: radial-gradient(
+    ellipse 1400px 800px at 50% -10%,
+    rgba(124, 58, 237, 0.15) 0%,
+    rgba(79, 70, 229, 0.08) 30%,
+    rgba(11, 11, 18, 0.98) 70%,
+    #0b0b12 100%
+  );
+
+  position: relative;
+  overflow-x: hidden;
+}
+
+.setting-main-div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(79, 70, 229, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================
+   HEADER
+========================= */
+.setting-header-div {
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.setting-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.settings-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(79, 70, 229, 0.15));
+  border-radius: 12px;
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: #a78bfa;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+}
+
+.settings-main-head-para {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.setting-head-para {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+/* =========================
+   SUBSCRIPTION CARD
+========================= */
+.setting-subscription-main-div {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+
+  padding: 32px 40px;
+  background: linear-gradient(
+    135deg,
+    rgba(25, 18, 45, 0.95) 0%,
+    rgba(15, 10, 30, 0.98) 100%
+  );
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 24px;
+
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 1px 0 rgba(255, 255, 255, 0.05) inset;
+
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.setting-subscription-main-div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 58, 237, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.setting-subscription-main-div:hover::before {
+  left: 100%;
+}
+
+.setting-subscription-main-div:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(124, 58, 237, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+.setting-subscription-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.setting-subscription-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subscription-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.15));
+  border-radius: 10px;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.2);
+}
+
+.settng-subscription-head {
+  font-size: 13px;
+  font-weight: 600;
+  color: #c4b5fd;
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.setting-plans-div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-badge {
+  display: inline-flex;
+  align-items: center;
+}
+
+.setting-plan-para {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.billing-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.billing-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+.setting-plan-bill {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+/* =========================
+   BUTTON STYLING
+========================= */
+.button-to-subscription-div {
+  flex-shrink: 0;
+}
+
+.button-to-subscription-div button {
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 16px rgba(124, 58, 237, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  white-space: nowrap;
+}
+
+.button-to-subscription-div button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+  box-shadow: 
+    0 8px 24px rgba(124, 58, 237, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+.button-to-subscription-div button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   SECURITY CARD
+========================= */
+.setting-security-div {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  padding: 32px 40px;
+  background: linear-gradient(
+    135deg,
+    rgba(25, 18, 45, 0.95) 0%,
+    rgba(15, 10, 30, 0.98) 100%
+  );
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 24px;
+
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 1px 0 rgba(255, 255, 255, 0.05) inset;
+
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.setting-security-div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 58, 237, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.setting-security-div:hover::before {
+  left: 100%;
+}
+
+.setting-security-div:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(124, 58, 237, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+.setting-security-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.security-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.15));
+  border-radius: 10px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
+}
+
+.setting-security-head {
+  font-size: 13px;
+  font-weight: 600;
+  color: #c4b5fd;
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.setting-password-main-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.setting-password-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.setting-password-div:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.password-label-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.password-label-group svg {
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.pass-head {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.pass-symbol {
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  margin: 0;
+  font-family: "Courier New", monospace;
+}
+
+/* CHANGE PASSWORD BUTTON */
+.setting-changepassword-div {
+  width: 100%;
+}
+
+.setting-changepassword-div button {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 16px rgba(124, 58, 237, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  margin: 0;
+}
+
+.setting-changepassword-div button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+  box-shadow: 
+    0 8px 24px rgba(124, 58, 237, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+.setting-changepassword-div button:active {
+  transform: translateY(0);
+}
+
+/* INFO TEXT */
+.more-detail-para-div {
+  margin-top: 4px;
+}
+
+.detail-para {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.detail-para a {
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.detail-para a:hover {
+  color: #c4b5fd;
+  border-bottom-color: #c4b5fd;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-up {
+  animation: slideUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.setting-subscription-main-div.slide-up {
+  animation-delay: 0.1s;
+}
+
+.setting-security-div.slide-up {
+  animation-delay: 0.2s;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .setting-main-div {
+    padding: 48px 48px 80px;
+  }
+}
+
+@media (max-width: 900px) {
+  .setting-main-div {
+    padding: 40px 32px 64px;
+  }
+
+  .setting-subscription-main-div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 28px 32px;
+  }
+
+  .button-to-subscription-div {
+    width: 100%;
+  }
+
+  .button-to-subscription-div button {
+    width: 100%;
+  }
+
+  .setting-security-div {
+    padding: 28px 32px;
+  }
+
+  .settings-main-head-para {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .setting-main-div {
+    padding: 32px 24px 56px;
+  }
+
+  .setting-subscription-main-div,
+  .setting-security-div {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .settings-main-head-para {
+    font-size: 28px;
+  }
+
+  .setting-head-para {
+    font-size: 14px;
+  }
+
+  .setting-plan-para {
+    font-size: 20px;
+  }
+
+  .billing-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

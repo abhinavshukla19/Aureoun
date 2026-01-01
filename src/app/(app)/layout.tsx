@@ -1,4 +1,7 @@
-import { ReactNode } from "react";
+"use client";
+
+import { ReactNode, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Header } from "../../../Combiner/header/header";
 
 export default function AppLayout({
@@ -6,10 +9,26 @@ export default function AppLayout({
 }: {
   children: ReactNode;
 }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // Add page transition class to body
+    document.body.classList.add("page-transition");
+    
+    // Remove class after animation completes
+    const timer = setTimeout(() => {
+      document.body.classList.remove("page-transition");
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
   return (
     <>
       <Header />
-      {children}
+      <div className="page-content">
+        {children}
+      </div>
     </>
   );
 }
