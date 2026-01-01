@@ -1,0 +1,386 @@
+/* Main Container */
+.top-ten {
+  padding: 4rem 3.5rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
+  position: relative;
+}
+
+/* Subtle background glow */
+.top-ten::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(100, 50, 200, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Title Styling */
+.top-ten-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 3rem;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 1;
+}
+
+/* Cards Container */
+.top-ten-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+  padding: 1rem 0;
+}
+
+/* Individual Card */
+.rank-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+  max-width: 280px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  isolation: isolate;
+}
+
+/* Card hover lift effect */
+.rank-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  z-index: 10;
+}
+
+/* Large Rank Number */
+.rank-number {
+  font-size: 13rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 3px rgba(255, 255, 255, 0.12);
+  position: relative;
+  z-index: 1;
+  line-height: 0.85;
+  margin-right: -2.5rem;
+  transition: all 0.5s ease;
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* Poster Container */
+.rank-poster {
+  position: relative;
+  z-index: 2;
+  width: 180px;
+  height: 265px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: #1a1a1a;
+}
+
+.rank-poster > img {
+  border-radius: 8px;
+}
+
+/* RANK 1 - RED/CRIMSON GLOW (Netflix Red/Champion) */
+.rank-card:nth-child(1):hover .rank-poster {
+  box-shadow: 
+    0 0 60px rgba(229, 9, 20, 0.8),
+    0 0 100px rgba(229, 9, 20, 0.5),
+    0 0 140px rgba(229, 9, 20, 0.3),
+    0 15px 50px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  filter: brightness(1.1);
+}
+
+.rank-card:nth-child(1):hover .rank-number {
+  -webkit-text-stroke: 3px rgba(229, 9, 20, 0.8);
+  filter: drop-shadow(0 0 30px rgba(229, 9, 20, 0.7));
+}
+
+.rank-card:nth-child(1) .rank-poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0) 0%, rgba(229, 9, 20, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rank-card:nth-child(1):hover .rank-poster::before {
+  opacity: 1;
+}
+
+/* RANK 2 - CYAN/BLUE GLOW (Cool & Modern) */
+.rank-card:nth-child(2):hover .rank-poster {
+  box-shadow: 
+    0 0 60px rgba(0, 200, 255, 0.8),
+    0 0 100px rgba(0, 200, 255, 0.5),
+    0 0 140px rgba(0, 150, 255, 0.3),
+    0 15px 50px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  filter: brightness(1.1);
+}
+
+.rank-card:nth-child(2):hover .rank-number {
+  -webkit-text-stroke: 3px rgba(0, 200, 255, 0.8);
+  filter: drop-shadow(0 0 30px rgba(0, 200, 255, 0.7));
+}
+
+.rank-card:nth-child(2) .rank-poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 200, 255, 0) 0%, rgba(0, 200, 255, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rank-card:nth-child(2):hover .rank-poster::before {
+  opacity: 1;
+}
+
+/* RANK 3 - PURPLE/MAGENTA GLOW (Royal & Premium) */
+.rank-card:nth-child(3):hover .rank-poster {
+  box-shadow: 
+    0 0 60px rgba(200, 0, 255, 0.8),
+    0 0 100px rgba(200, 0, 255, 0.5),
+    0 0 140px rgba(150, 0, 255, 0.3),
+    0 15px 50px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  filter: brightness(1.1);
+}
+
+.rank-card:nth-child(3):hover .rank-number {
+  -webkit-text-stroke: 3px rgba(200, 0, 255, 0.8);
+  filter: drop-shadow(0 0 30px rgba(200, 0, 255, 0.7));
+}
+
+.rank-card:nth-child(3) .rank-poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200, 0, 255, 0) 0%, rgba(200, 0, 255, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rank-card:nth-child(3):hover .rank-poster::before {
+  opacity: 1;
+}
+
+/* RANK 4 - GREEN/LIME GLOW (Fresh & Energetic) */
+.rank-card:nth-child(4):hover .rank-poster {
+  box-shadow: 
+    0 0 60px rgba(50, 255, 100, 0.8),
+    0 0 100px rgba(50, 255, 100, 0.5),
+    0 0 140px rgba(100, 255, 150, 0.3),
+    0 15px 50px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  filter: brightness(1.1);
+}
+
+.rank-card:nth-child(4):hover .rank-number {
+  -webkit-text-stroke: 3px rgba(50, 255, 100, 0.8);
+  filter: drop-shadow(0 0 30px rgba(50, 255, 100, 0.7));
+}
+
+.rank-card:nth-child(4) .rank-poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(50, 255, 100, 0) 0%, rgba(50, 255, 100, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rank-card:nth-child(4):hover .rank-poster::before {
+  opacity: 1;
+}
+
+/* RANK 5 - RED/ORANGE GLOW (Hot & Intense) */
+.rank-card:nth-child(5):hover .rank-poster {
+  box-shadow: 
+    0 0 60px rgba(255, 100, 0, 0.8),
+    0 0 100px rgba(255, 100, 0, 0.5),
+    0 0 140px rgba(255, 150, 0, 0.3),
+    0 15px 50px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  filter: brightness(1.1);
+}
+
+.rank-card:nth-child(5):hover .rank-number {
+  -webkit-text-stroke: 3px rgba(255, 100, 0, 0.8);
+  filter: drop-shadow(0 0 30px rgba(255, 100, 0, 0.7));
+}
+
+.rank-card:nth-child(5) .rank-poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 100, 0, 0) 0%, rgba(255, 100, 0, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rank-card:nth-child(5):hover .rank-poster::before {
+  opacity: 1;
+}
+
+/* Shimmer/Headlamp effect - diagonal light stripe */
+.rank-poster::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: left 0.65s ease-out;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.rank-card:hover .rank-poster::after {
+  left: 150%;
+}
+
+/* Poster Image */
+.rank-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 0;
+  border-radius: 8px;
+}
+
+/* Image zoom on hover - contained within poster */
+.rank-card:hover .rank-poster img {
+  transform: scale(1.08);
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .top-ten-row {
+    gap: 2rem;
+  }
+  
+  .rank-card {
+    max-width: 240px;
+  }
+  
+  .rank-number {
+    font-size: 11rem;
+    margin-right: -2rem;
+  }
+  
+  .rank-poster {
+    width: 160px;
+    height: 235px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .top-ten {
+    padding: 3rem 2.5rem;
+  }
+  
+  .top-ten-row {
+    gap: 1.5rem;
+  }
+  
+  .rank-number {
+    font-size: 9rem;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.12);
+  }
+  
+  .rank-poster {
+    width: 140px;
+    height: 210px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-ten {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .top-ten-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .top-ten-row {
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1.2rem;
+    justify-content: flex-start;
+    padding: 1rem 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .top-ten-row::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .rank-card {
+    flex-shrink: 0;
+    max-width: 200px;
+  }
+  
+  .rank-number {
+    font-size: 7rem;
+    margin-right: -1.5rem;
+  }
+  
+  .rank-poster {
+    width: 120px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rank-number {
+    font-size: 5.5rem;
+    margin-right: -1rem;
+  }
+  
+  .rank-poster {
+    width: 100px;
+    height: 150px;
+  }
+  
+  .rank-card:hover {
+    transform: translateY(-15px) scale(1.05);
+  }
+}
