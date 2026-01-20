@@ -1,5 +1,8 @@
+import { userAgent } from "next/server";
+import { Continue_watching } from "../../../Components/continue-watching/cw";
 import "./profiledetail.css";
 import { Calendar, CreditCard, User, Mail } from "lucide-react";
+import { headers } from "next/headers";
 
 type variable={
   username:string,
@@ -13,32 +16,26 @@ type variable={
 export const Profile_detail = async({username , email , phone_number, plan_name, member_since, is_verified}:variable) => {
   // Calculate account age from member_since
   const calculateAccountAge = () => {
-    if (!member_since) return "N/A";
-    try {
-      const memberDate = new Date(member_since);
-      const today = new Date();
-      const diffTime = Math.abs(today.getTime() - memberDate.getTime());
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      
-      if (diffDays < 30) {
-        return `${diffDays} days`;
-      } else if (diffDays < 365) {
-        const months = Math.floor(diffDays / 30);
-        return `${months} ${months === 1 ? 'month' : 'months'}`;
-      } else {
-        const years = Math.floor(diffDays / 365);
-        const remainingMonths = Math.floor((diffDays % 365) / 30);
-        if (remainingMonths === 0) {
-          return `${years} ${years === 1 ? 'year' : 'years'}`;
-        }
-        return `${years} ${years === 1 ? 'year' : 'years'}, ${remainingMonths} ${remainingMonths === 1 ? 'month' : 'months'}`;
-      }
-    } catch {
-      return "N/A";
-    }
-  };
+  if (!member_since) return "N/A";
 
-  const accountAge = calculateAccountAge();
+  const days = Math.floor(
+    (Date.now() - new Date(member_since).getTime()) / 86400000
+  );
+
+  if (days < 30) return `${days} days`;
+
+  const months = Math.floor(days / 30);
+  if (months < 12) return `${months} ${months === 1 ? "month" : "months"}`;
+
+  const years = Math.floor(months / 12);
+  const remMonths = months % 12;
+
+  return remMonths
+    ? `${years} ${years === 1 ? "year" : "years"}, ${remMonths} ${remMonths === 1 ? "month" : "months"}`
+    : `${years} ${years === 1 ? "year" : "years"}`;
+};
+
+const accountAge = calculateAccountAge();
 
   const AccountInfo = [
     {
@@ -70,6 +67,37 @@ export const Profile_detail = async({username , email , phone_number, plan_name,
       description: email || "No email"
     }
   ];
+
+  //  const headersList = await headers();
+  //   const ua = userAgent({ headers: headersList });
+  
+  //   const device = ua.device?.type ?? "desktop";
+  //   const os = ua.os?.name ?? "unknown";
+  //   const browser = ua.browser?.name ?? "unknown";
+  
+  //   let ip =
+  //     headersList.get("x-forwarded-for")?.split(",")[0] ||
+  //     headersList.get("x-real-ip") ||
+  //     "";
+  
+  // // DEV ONLY
+  // if (!ip || ip === "::1" || ip === "127.0.0.1") {
+  //   ip = "8.8.8.8"; 
+  // }
+  
+  
+  //   let location = "Unknown";
+  
+  //   try {
+  //     const res = await fetch(`https://ipapi.co/${ip}/json/`);
+  //     const data = await res.json();
+  //     location = `${data.city ?? "Unknown city"}, ${data.country_name}`;
+  //   } catch {
+  //     location = "Unknown";
+  //   }
+  
+  //  console.log(os , browser , location , device)
+  
 
   const Active = [
     {

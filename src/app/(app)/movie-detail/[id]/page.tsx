@@ -5,6 +5,7 @@ import "./movie-detail.css";
 import { Host } from "../../../../../Components/Global-exports/global-exports";
 import { ErrorHandler } from "../../../../../Components/error-handler/error-handler";
 import { cookies } from "next/headers";
+import { title } from "process";
 
 type PageProps = {
   params: Promise<{
@@ -58,27 +59,24 @@ const Movie_detail = async ({ params }: PageProps) => {
   let errorMessage: string | null = null;
   let movie_id : string | null;
   let token : string | undefined;
-
+  const param = await params;
+  movie_id = param.id;
+  if (!movie_id ) {
+      errorMessage = "Invalid movie ID. Please select a valid movie.";
+  } 
+  
   // API call for movie
   try {
     const cookie=await cookies();
     token=cookie.get("token")?.value;
-    const param = await params;
-    movie_id = param.id;
-    
-    if (!movie_id ) {
-      errorMessage = "Invalid movie ID. Please select a valid movie.";
-    } else {
-      const res = await axios.get(`${Host}/moviedetailbyid/${movie_id}` , {headers:{token:token}});
-
-      if (!res.data || !res.data.data || !res.data.data[0]) {
+   
+    const res = await axios.get(`${Host}/moviedetailbyid/${movie_id}` , {headers:{token:token}});
+    if (!res.data || !res.data.data || !res.data.data[0]) {
         errorMessage ="Movie not found. The movie may have been removed or the ID is incorrect.";
       } else {
         moviedata = res.data.data[0];
       }
-    }
   } catch (error: any) {
-    console.error("Error loading movie details:", error);
     errorMessage = getErrorMessage(error);
   }
 
@@ -125,7 +123,7 @@ const Movie_detail = async ({ params }: PageProps) => {
 
   return (
     <div className="movie-detail-page">
-      <Video_player movie_url={movie_url} />
+      <Video_player movie_url={movie_url} movie_id={movie_id} />
       <Movie_page {...moviedata} />
     </div>
   );

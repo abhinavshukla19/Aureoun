@@ -1,12 +1,12 @@
-import { cookies } from "next/headers";
 import "./all-movies-tv.css"
 import Link from "next/link";
-import axios from "axios";
+import axios, { AxiosHeaderValue } from "axios";
 import { Host } from "../Global-exports/global-exports";
 import { ErrorHandler } from "../error-handler/error-handler";
 
 type AllMoviesTVProps = {
   hideHeader?: boolean;
+  token:AxiosHeaderValue | undefined;
 };
 
 type rowdata={
@@ -24,23 +24,20 @@ type rowdata={
     created_at: null
   }
 
-export const AllMoviesTV = async ({ hideHeader = false }: AllMoviesTVProps) => {
+
+export const AllMoviesTV = async ({ hideHeader = false , token}: AllMoviesTVProps) => {
   let data=[] as rowdata[];
   let errorMessage: string | null = null;
   
     try {
-        const cookiestore=await cookies()
-        const token=cookiestore.get("token")?.value
-        if(!token){
-            errorMessage = "Please sign in to browse movies and TV shows.";
-        } else {
-            const res=await axios.get(`${Host}/get_all_movie`, {headers:{token:token}})
-            if (res.data && res.data.data) {
-                data=res.data.data as rowdata[];
-            } else {
-                errorMessage = "No movies or TV shows found. The catalog may be empty.";
-            }
-        }
+
+      const res=await axios.get(`${Host}/get_all_movie`, {headers:{token:token}})
+      if (res.data && res.data.data) {
+          data=res.data.data as rowdata[];
+      } else {
+          errorMessage = "No movies or TV shows found. The catalog may be empty.";
+      }
+
     } catch (error: any) {
         console.log(error , "Failed to fetch movies and TV shows");
         if (error?.code === 'ECONNREFUSED' || error?.code === 'ENOTFOUND') {

@@ -5,30 +5,32 @@ import { cookies } from "next/headers";
 import axios from "axios";
 import { Host } from "../../../../Components/Global-exports/global-exports";
 import { Profilehead } from "../../../../Combiner/profile/profilehead/profilehead";
+import { headers } from "next/headers";
+import { userAgent } from "next/server";
+import { redirect } from "next/navigation";
 
 
 const Profile=async()=>{
     let username , email , phone_number , plan_name , member_since , is_verified;
     let errorMessage: string | null = null;
+    const cookie=await cookies()
+    const token=cookie.get("token")?.value
+    if (!token) {
+        redirect("/signin")
+    }
     
      try {
-      const cookie=await cookies()
-      const token=cookie.get("token")?.value
       
-      if (!token) {
-        errorMessage = "Authentication required. Please sign in.";
-      } else {
         const res=await axios.get(`${Host}/profile`,{headers:{token :token}})
         const data=res.data.data
-        console.log(data)
         username=data.username as string;
         email=data.email as string;
         phone_number=data.phone_number,
         plan_name=data.plan_name,
         member_since=new Date(data.member_since).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});
         is_verified=data.is_verified;
+
       }
-    } 
     catch (error: any) {
         console.log("Profile error" , error);
         if (error?.code === 'ECONNREFUSED' || error?.code === 'ENOTFOUND') {
@@ -50,6 +52,7 @@ const Profile=async()=>{
         }
     }
     
+   
     return(
         <div className="profile-main-div">
             <ProfileErrorHandler error={errorMessage} />

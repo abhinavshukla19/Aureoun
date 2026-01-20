@@ -1,9 +1,7 @@
-"use client";
-
-import { Recommendation } from "../../Components/recommendation/recomendation"
-import { Play, Plus, Share2 } from "lucide-react"
-import "./movie-page.css"
+import { Recommendation } from "../../Components/recommendation/recomendation";
+import { Play, Plus, Share2 } from "lucide-react";
 import { Cast_actor } from "../../Components/cast-actor/cast-actor";
+import "./movie-page.css";
 
 type rowdata={
     movie_id: string,
@@ -15,7 +13,6 @@ type rowdata={
     audio_languages: string,
     subtitle_languages: string,
     type: string,
-    // onclick:MouseEventHandler<HTMLButtonElement> | undefined
   }
 
 export const Movie_page=({movie_id , title , release_year , description,type , duration , genre ,audio_languages , subtitle_languages }:rowdata)=>{
@@ -24,6 +21,12 @@ export const Movie_page=({movie_id , title , release_year , description,type , d
         topTag: "TOP 5 SERIES",
         match: "98% MATCH"
     }
+
+    const movieinfo=[
+        {label:"Genre" , value : genre  },
+        {label :"Audio" , value : audio_languages },
+        {label :"Subtitles" , value : subtitle_languages}
+    ]
 
     
     return(
@@ -58,9 +61,6 @@ export const Movie_page=({movie_id , title , release_year , description,type , d
                             <button className="movie-icon-button">
                                 <Plus size={20} />
                             </button>
-                            <button className="movie-icon-button">
-                                <Share2 size={20} />
-                            </button>
                         </div>
                     </div>
 
@@ -69,24 +69,15 @@ export const Movie_page=({movie_id , title , release_year , description,type , d
                     </div>
 
                     <div className="movie-info-section">
-                        <div className="movie-info-item">
-                            <span className="movie-info-label">Genres:</span>
+                        {movieinfo.map((item,idx)=>{
+                            return(
+                            <div className="movie-info-item" key={idx}>
+                            <span className="movie-info-label">{item.label}</span>
                             <div className="movie-info-values">
-                                <span className="movie-info-value">{genre}</span>
+                                <span className="movie-info-value">{item.value}</span>
                             </div>
-                        </div>
-                        <div className="movie-info-item">
-                            <span className="movie-info-label">Audio:</span>
-                            <div className="movie-info-values">
-                                <span className="movie-info-value">{audio_languages}</span>
-                            </div>
-                        </div>
-                        <div className="movie-info-item">
-                            <span className="movie-info-label">Subtitles:</span>
-                            <div className="movie-info-values">
-                                <span className="movie-info-value">{subtitle_languages}</span>
-                            </div>
-                        </div>  
+                        </div> )
+                        })}              
                     </div>
 
                     <div className="movie-cast-section">

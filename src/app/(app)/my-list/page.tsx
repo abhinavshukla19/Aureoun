@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { MyList } from "../../../../Components/my-list/my-list";
 import axios from "axios";
 import { Host } from "../../../../Components/Global-exports/global-exports";
+import { redirect } from "next/navigation";
 
 type rowdata = {
   movie_id: number;
@@ -21,20 +22,21 @@ type rowdata = {
 
 const MyListPage = async () => {
   let apiData: rowdata[] = [];
-  let token: string | undefined;
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value as string | undefined;
+
+    if (!token) {
+      redirect("/signin");
+      
+    }
 
   try {
-    const cookieStore = await cookies();
-    token = cookieStore.get("token")?.value;
-
-    if (token) {
-      const res = await axios.get(`${Host}/get_my_list`, {
-        headers: { token: token }
-      });
-      if (res.data.data) {
-        apiData = res.data.data as rowdata[];
-      }
+    
+    const res = await axios.get(`${Host}/get_my_list`, {headers: { token: token }});
+    if (res.data.data) {
+      apiData = res.data.data as rowdata[];
     }
+      
   } catch (error: any) {
     console.log("Error fetching my list:", error);
   }

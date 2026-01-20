@@ -1,15 +1,16 @@
+import { Plus } from "lucide-react"
 import "./hero-section.css"
 
 export const Hero_section = () => {
   const heromovie = {
-    name: "DHURENDHAR",
+    name: "Love At First Sight",
     lastname: "",
     match: "98%",
-    year: "2026",
+    year: "2025",
     rating: "4K Ultra HD",
     ageRating: "5.1",
     description:
-      "In a future where silence is currency, a rogue data courier discovers a frequency that could rewrite human history. Now, she must outrun the very system she helped build."
+      "Love at First Sight is a heartwarming romantic story that begins with a chance encounter and unfolds into an unforgettable connection. As two strangers navigate distance, timing, and fate, the film explores how fleeting moments can change lives forever. A tender exploration of destiny, hope, and emotional vulnerability."
   }
 
   return (
@@ -17,7 +18,7 @@ export const Hero_section = () => {
       {/* 🎬 Background Video */}
       <video
         className="hero-video"
-        src="./video/Naal_Nachna.mp4"
+        src="https://pub-0ab957bd269d4ddbb175b1627b53d2a4.r2.dev/Love--at-first-sight/movie/Love_at_First_Sight_Official_Trailer_Netflix_1080P.mp4"
         autoPlay
         muted
         loop
@@ -44,7 +45,7 @@ export const Hero_section = () => {
 
         <div className="hero-actions">
           <button className="btn primary">▶ Play</button>
-          <button className="btn secondary">ℹ More Info</button>
+          <button className="movie-icon-button"><Plus size={20} /></button>
         </div>
       </div>
     </section>

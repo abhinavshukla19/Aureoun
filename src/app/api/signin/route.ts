@@ -29,7 +29,6 @@ export async function POST(req: NextRequest) {
       password
     });
     
-    console.log(req.body)
     if (res.status === 200) {
       (await cookies()).set({
         name: "token",

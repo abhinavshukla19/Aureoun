@@ -1,34 +1,33 @@
-import axios from "axios";
+import axios, { AxiosHeaderValue } from "axios";
 import "./topfive.css"
 import { Host } from "../Global-exports/global-exports";
-import { cookies } from "next/headers";
 import { ErrorHandler } from "../error-handler/error-handler";
 
 
 type rowdata={
-     movie_id: number,
+    movie_id: number,
     title: string,
     banner_url: string,
     rank_position:number
   }
+  
+type tokentype={
+  token:AxiosHeaderValue | undefined;
+}
 
-export const Topfive = async() => {
+export const Topfive = async({token}:tokentype) => {
   let data=[] as rowdata[]
   let errorMessage: string | null = null;
   
   try {
-    const cookiestore=await cookies()
-    const token=cookiestore.get("token")?.value
-    if(!token){
-      errorMessage = "Please sign in to view top movies.";
-    } else {
+
       const res=await axios(`${Host}/topfivemovies`,{headers:{token:token}})
       if (res.data && res.data.data) {
         data=res.data.data as rowdata[]
       } else {
         errorMessage = "No top movies available at the moment.";
       }
-    }
+
   } catch (error: any) {
     console.log(error);
     if (error?.code === 'ECONNREFUSED' || error?.code === 'ENOTFOUND') {
